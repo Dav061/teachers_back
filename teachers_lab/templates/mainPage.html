@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Список преподавателей{% endblock %}
+
+{% block content %}
+<div class="page">
+
+    <form class="form"  method="get">
+        {% csrf_token %}
+        <input   placeholder="Укажите факультет..." class="page__input" name="text" type="text" value={{find}}>
+        <input class="page__button" type="submit" value="Поиск">
+    </form>
+    <div class="page__content">
+        {% for var in vars %}
+            <a href="{% url 'teach_url' var.id %}">
+                {% include 'card.html' %}
+            </a>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

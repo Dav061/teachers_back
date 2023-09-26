@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="teach-page">
+    <div>
+        <a href="{% url 'teaches_url' %}" class="btn">Вернуться к списку преподавателей</a>
+    </div>
+    <div class="teach-page__content">
+        <div>
+            <img class="teach-page__image" src="{% static image %}" alt="Изображение преподавателя" class="image-border"/>
+        </div>
+        <div class="teach-page__info">
+            <style>
+                .outline {
+                    border:10px solid #7fff00;
+                    padding: 0 25px;
+                    border-radius: 50px;
+                    }
+            </style>
+            <div class="outline">
+            <h2>{{ title }}</h2>
+            <p>{{ description }}</p>
+            <ul>
+                {% for feature in features %}
+                    <li>{{ feature }}</li>
+                {% endfor %}
+            </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
